@@ -2,9 +2,11 @@ package com.scode.guitianqidemo.util;
 
 import android.text.TextUtils;
 
+import com.google.gson.Gson;
 import com.scode.guitianqidemo.db.City;
 import com.scode.guitianqidemo.db.County;
 import com.scode.guitianqidemo.db.Province;
+import com.scode.guitianqidemo.gson.HeWeatherBean;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -87,6 +89,18 @@ public class Utility {
         return false;
         }
 
+        //解析返回的天气数据
+    public static HeWeatherBean handleWeatherResponse(String response) {
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather5");
+            String weatherContent=jsonArray.getJSONObject(0).toString();
+            return new Gson().fromJson(weatherContent,HeWeatherBean.class);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 
 }

@@ -1,10 +1,12 @@
 package com.scode.guitianqidemo.fragment;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +17,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.scode.guitianqidemo.MainActivity;
 import com.scode.guitianqidemo.R;
+import com.scode.guitianqidemo.WeatherActivity;
 import com.scode.guitianqidemo.db.City;
 import com.scode.guitianqidemo.db.County;
 import com.scode.guitianqidemo.db.Province;
@@ -87,7 +91,17 @@ public class ChooseAreaFragment extends Fragment {
                     selectedCity = cities.get(position);
                     queryCounties();
                 } else if (currentLevel == LEVEL_COUNTY) {
-
+                    String weather_id=counties.get(position).getWeatherId();
+                    if (getActivity() instanceof MainActivity){Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                        intent.putExtra("weather_id", weather_id);
+                        startActivity(intent);
+                        getActivity().finish();
+                    }else if (getActivity() instanceof WeatherActivity){
+                        WeatherActivity activity = (WeatherActivity) getActivity();
+                        activity.swipeRefreshLayout.setRefreshing(true);
+                        activity.drawerLayout.closeDrawer(Gravity.START);
+                        activity.requestWeather(weather_id);
+                    }
                 }
             }
         });

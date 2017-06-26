@@ -131,6 +131,31 @@ public class HeWeatherBean {
         private ComfBean comf;
         private CwBean cw;
         private SportBean sport;
+
+        public ComfBean getComf() {
+            return comf;
+        }
+
+        public void setComf(ComfBean comf) {
+            this.comf = comf;
+        }
+
+        public CwBean getCw() {
+            return cw;
+        }
+
+        public void setCw(CwBean cw) {
+            this.cw = cw;
+        }
+
+        public SportBean getSport() {
+            return sport;
+        }
+
+        public void setSport(SportBean sport) {
+            this.sport = sport;
+        }
+
         public static class SportBean{
             private String txt;
 

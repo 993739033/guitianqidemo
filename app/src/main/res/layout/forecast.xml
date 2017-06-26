@@ -15,6 +15,48 @@
         android:textColor="#fff"
         />
     <LinearLayout
+        android:orientation="horizontal" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        >
+        <TextView
+            android:text="日期               "
+            android:layout_weight="2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:layout_gravity="center_vertical"
+            />
+        <TextView
+            android:text=" 天气"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            />
+        <TextView
+            android:text="max"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:gravity="right"
+            android:layout_gravity="center"
+            />
+
+        <TextView
+            android:text="min"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:gravity="right"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/forecast_layout"
